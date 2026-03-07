@@ -4,8 +4,32 @@ const openCard=document.getElementById("open");
 const closeCard=document.getElementById("close");
 const CardAll=document.getElementById("all-btn");
 let getIssues=document.getElementById("issues");
+const Searchbtn=document.getElementById("btnSearch");
+const inputS=document.getElementById("search");
+const spinner=document.getElementById("spinner");
+function Addspin(){
+    CardContainer.classList.add("hidden");
+    spinner.classList.remove("hidden");
+}
+function Removespin(){
+    spinner.classList.add("hidden");
+     CardContainer.classList.remove("hidden");
+}
+Searchbtn.addEventListener ('click',async()=>{
+    
+    const val=inputS.value;
+    Addspin();
+const res=await fetch(`https://phi-lab-server.vercel.app/api/v1/lab/issues/search?q=${val}`);
+const Ndata=await res.json();
+CardContainer.innerHTML="";
+getIssues.innerText=Ndata.data.length;
+Removespin();
+disPlayCard(Ndata.data);
+
+})
 
 CardAll.addEventListener('click', (e) => {
+  
     const clickedBtn = e.target.closest(".allbtn");
     if (!clickedBtn) return;
 
@@ -19,6 +43,7 @@ CardAll.addEventListener('click', (e) => {
     clickedBtn.classList.add("btn-primary");
 
     // Fetch and Filter Logic
+    Addspin();
     fetch("https://phi-lab-server.vercel.app/api/v1/lab/issues")
         .then(res => res.json())
         .then(result => {
@@ -28,25 +53,33 @@ CardAll.addEventListener('click', (e) => {
             CardContainer.innerHTML = ""; 
 
             if (clickedBtn === allCard) {
+              
                 getIssues.innerText=data.length;
+                Removespin();
                 disPlayCard(data);
             } 
             else if (clickedBtn === openCard) {
+              
                 const opendata = data.filter(item => item.status === "open");
                 getIssues.innerText=opendata.length;
+                Removespin();
                 disPlayCard(opendata);
             } 
             else if (clickedBtn === closeCard) {
+             
                 const closedata = data.filter(item => item.status === "closed");
                 getIssues.innerText=closedata.length;
+                Removespin();
                 disPlayCard(closedata);
             }
         });
 });
 
 const LoadCard=async()=>{
+    Addspin();
     const res= await fetch("https://phi-lab-server.vercel.app/api/v1/lab/issues");
     const data=await res.json();
+    Removespin();
     disPlayCard(data.data);
 
 }
@@ -99,7 +132,7 @@ const disPlayCard = (cards) => {
 
           </div>
 
-          <div class="border-t border-gray-100"></div>
+          <div class="border-t border-gray-200"></div>
 
           <div class="px-6 py-4 text-xs opacity-60 flex justify-between">
           <div>
