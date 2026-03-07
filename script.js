@@ -145,7 +145,7 @@ const disPlayCard = (cards) => {
           <div class="px-6 py-4 text-xs opacity-60 flex justify-between">
           <div>
             <p id="issueAuthor" class="font-medium text-gray-700">#${card.id} by ${card.author}</p>
-             <p id="issueAuthor" class="font-medium text-gray-700">Assignee ${card.assignee}</p>
+             <p id="issueAuthor" class="font-medium text-gray-700">Assignee ${card.assignee?card.assignee:"Unassigned"}</p>
             
           </div>
           <div>
