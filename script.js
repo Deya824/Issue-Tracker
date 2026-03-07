@@ -18,13 +18,21 @@ function Removespin(){
 Searchbtn.addEventListener ('click',async()=>{
     
     const val=inputS.value;
+     if (!val) return;
     Addspin();
 const res=await fetch(`https://phi-lab-server.vercel.app/api/v1/lab/issues/search?q=${val}`);
 const Ndata=await res.json();
 CardContainer.innerHTML="";
 getIssues.innerText=Ndata.data.length;
+
+if(Ndata.data.length=== 0){
+    Removespin();
+    CardContainer="";
+    
+}
+else{
 Removespin();
-disPlayCard(Ndata.data);
+disPlayCard(Ndata.data);}
 
 })
 
