@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+     <link href="https://cdn.jsdelivr.net/npm/daisyui@5" rel="stylesheet" type="text/css" />
+<script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <title>Login</title>
+</head>
+<body>
+
+ 
+
+<div class="hero bg-base-200 min-h-screen">
+  <div class="hero-content min-w-full">
+
+    <div class="card bg-base-100 w-full max-w-md shadow-2xl">
+      <div class="card-body">
+
+        <fieldset class="fieldset">
+
+         
+          <div class="text-center flex flex-col items-center mb-4">
+            <img src="./assets/github-logo.png" alt="" class="w-16 mb-2">
+            <h2 class="font-bold text-2xl">GitHub Issues Tracker</h2>
+            <p class="text-gray-500 text-sm">Sign in to manage your issues</p>
+          </div>
+
+          <label class="label font-semibold text-black text-[14px]">Username</label>
+          <input type="username" id="username" class="input input-bordered w-full" placeholder="Enter Username" />
+          <h1 class="text-[#4A00FF]">Default: admin</h1>
+
+          <label class="label mt-2 font-semibold text-black text-[14px]">Password</label>
+          <input type="password" id="password" class="input input-bordered w-full" placeholder="Enter Password" />
+           <h1 class="text-[#4A00FF]">Default: admin1234</h1>
+
+          
+
+          <button onclick="Login()" class="btn btn-primary mt-4 w-full">Sign in</button>
+          <div class="flex items-center my-6">
+  <div class="flex-grow border-t border-gray-300"></div>
+  <span class="mx-3 text-gray-500 text-sm">OR</span>
+  <div class="flex-grow border-t border-gray-300"></div>
+</div>
+
+
+<div class="text-center">
+  <p class="text-gray-500 text-sm mb-3">Demo Credentials:</p>
+
+  <div class="bg-gray-100 rounded-lg p-4">
+    <p><span class="font-semibold">Username:</span> admin</p>
+    <p><span class="font-semibold">Password:</span> admin123</p>
+  </div>
+</div>
+
+        </fieldset>
+
+      </div>
+    </div>
+
+  </div>
+</div>
+
+
+</body>
+<script>
+    const Login=()=>{
+        const user=document.getElementById("username").value;
+        const password=document.getElementById("password").value;
+        if(user==="admin"&&password==="admin123"){
+            window.location.href="./index.html"
+        }
+        else{
+            alert("Invalid");
+        }
+    }
+</script>
+</html>
