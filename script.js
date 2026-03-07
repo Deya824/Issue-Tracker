@@ -129,12 +129,16 @@ const disPlayCard = (cards) => {
             </p>
             </div>
 
-          <div class="flex flex-wrap gap-2 mt-auto pt-4" id="issueTags"> ${card.labels.map((label, index) => {
-                const labelClass = index === 0 ? 'badge-error' : 'badge-warning';
-                return `<div class="badge badge-outline ${labelClass} uppercase text-[10px] font-bold">
-                  ${label}
-                </div>`;
-              }).join('')}
+          <div class="flex flex-wrap gap-2 mt-auto pt-4" id="issueTags"> ${card.labels.map((label) => {
+    const labelClass = 
+        label.toLowerCase() === 'bug'         ? 'badge-error' :
+        label.toLowerCase() === 'help wanted' ? 'badge-warning' :
+                                                'badge-success';
+    
+    return `<div class="badge badge-outline ${labelClass} uppercase text-[10px] font-bold">
+        ${label}
+    </div>`;
+}).join('')}
             </div>
 
           </div>
@@ -194,17 +198,25 @@ const showModal = async (card) => {
       </div>
 
       <div class="flex gap-3 mb-8">
-         ${issue.labels.map((label, index) => {
-            const isBug = label.toLowerCase() === 'bug';
-            const style = isBug ? 'bg-red-50 text-red-500 border-red-100' : 'bg-orange-50 text-orange-500 border-orange-100';
-            const icon = isBug ? '<i class="fa-solid fa-bug"></i>' : '<i class="fa-solid fa-globe"></i>';
-            
-            return `
-              <span class="border ${style} px-3 py-1 rounded-lg text-[10px] font-bold uppercase flex items-center gap-2">
+    ${issue.labels.map((label) => {
+        const key = label.toLowerCase();
+
+        const style = 
+            key === 'bug'         ? 'bg-red-50 text-red-500 border-red-100' :
+            key === 'help wanted' ? 'bg-orange-50 text-orange-500 border-orange-100' :
+                                    'bg-green-50 text-green-500 border-green-100';
+
+        const icon = 
+            key === 'bug'         ? '<i class="fa-solid fa-bug"></i>' :
+            key === 'help wanted' ? '<i class="fa-solid fa-globe"></i>' :
+                                    '<i class="fa-solid fa-circle-check"></i>';
+
+        return `
+            <span class="border ${style} px-3 py-1 rounded-lg text-[10px] font-bold uppercase flex items-center gap-2">
                 ${icon} ${label}
-              </span>`;
-         }).join('')}
-      </div>
+            </span>`;
+    }).join('')}
+</div>
 
       <p class="text-gray-500 leading-relaxed mb-8 text-lg">
         ${issue.description}
