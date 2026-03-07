@@ -36,7 +36,7 @@ disPlayCard(Ndata.data);}
 
 })
 
-CardAll.addEventListener('click', (e) => {
+CardAll.addEventListener('click', async(e) => {
   
     const clickedBtn = e.target.closest(".allbtn");
     if (!clickedBtn) return;
@@ -52,9 +52,8 @@ CardAll.addEventListener('click', (e) => {
 
     // Fetch and Filter Logic
     Addspin();
-    fetch("https://phi-lab-server.vercel.app/api/v1/lab/issues")
-        .then(res => res.json())
-        .then(result => {
+    const res=await fetch("https://phi-lab-server.vercel.app/api/v1/lab/issues")
+      const result= await res.json();
             const data = result.data; 
 
             
@@ -81,7 +80,7 @@ CardAll.addEventListener('click', (e) => {
                 disPlayCard(closedata);
             }
         });
-});
+
 
 const LoadCard=async()=>{
     Addspin();
