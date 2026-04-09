@@ -1,56 +1,26 @@
+# GitHub Issue Tracker 🐛
 
+A clean, responsive web application designed to track, manage, and visualize issues effectively. This project includes the UI design phase (Figma) and the frontend implementation, built to provide a seamless issue-tracking experience.
 
-1.What is the difference between var, let, and const?
+## 🚀 Live Demo
 
-Ans:
+**Start here:** The main entry point for the application is the login page.
+👉 **[Launch the Issue Tracker (login.html)](https://deya824.github.io/Issue-Tracker/login.html)**
 
-/var: var is function-scoped and hoisted. It is moved to the top of its scope before code runs which leads to unexpected bugs.
+## 🛠️ Tech Stack
 
-/let: let is block-scoped and can be reassigned.
+- **Frontend Structure:** HTML5
+- **Styling:** Tailwind CSS (`tailwind.config.js` included for custom utility classes)
+- **Logic:** JavaScript (ES6+)
+- **Design:** Figma
 
-/const: const is also block-scoped but can't be reassigned after declaration.
+## 📁 Project Structure
 
-2.What is the spread operator (...)?
-
-Ans:
-
-/The spread operator is a feature of JavaScript introduced with ES6 that gives you access to the insides of an iterable object. It unpacks elements from an array or object and spreads them individually.
-
-Ex:
-
-const a = [1, 2, 3];
-
-const b = [...a, 4, 5];
-
-3.What is the difference between map(), filter(), and forEach()?
-
-Ans:
-
-/forEach — It just loops, returns nothing. We use it for side effects like DOM updates.
-
-/map —It transforms each item and returns a new array of the same length.
-
-/filter — keeps only items that pass a condition and returns a shorter array.
-
-4.What is an arrow function?
-
-Ans:
-
-/A shorter way to write functions. Regular functions create their own this context. Arrow functions don't need to create this they inherit this from the surrounding scope.
-
-Example:
-
-function add(a, b) { return a + b; }
-
-const add = (a, b) => a + b;
-
-5.What are template literals?
-
-Ans:
-
-/Strings wrapped in backticks that allow embedded expressions and multi-line text. Anything inside ${} is evaluated as JavaScript. It handles line breaks naturally.
-
-Example:
-
-const msg = `Hello ${name}, you have ${count} messages.`;
-
+```text
+Issue-Tracker/
+├── assets/                       # Static assets (images, icons)
+├── GitHub Issues Tracker.fig     # Original Figma design file
+├── login.html                    # MAIN ENTRY: Authentication page
+├── home.html                     # Dashboard/Main application view
+├── tailwind.config.js            # Tailwind configuration
+└── (JavaScript logic files)      # Handled via modular JS files
